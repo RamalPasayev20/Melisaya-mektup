@@ -1,0 +1,120 @@
+/* Genel Stil ve Arka Plan */
+body {
+    background: #000; /* Arka plan siyah */
+    color: #E0E0E0; /* Yazı rengi: Beyaz-Gümüş ton */
+    font-family: 'Petit Formal Script', cursive; /* Zarif el yazısı fontu */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Yatay kaydırmayı engelle */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Mektubu dikeyde ortala */
+    align-items: center; /* Mektubu yatayda ortala */
+    position: relative;
+    z-index: 1; /* Mektubun yıldızların üstünde olması için */
+}
+
+/* Mektup Konteyneri */
+.letter-container {
+    max-width: 650px; /* Mektup genişliği */
+    margin: 40px auto;
+    padding: 40px;
+    background: rgba(10, 10, 10, 0.7); /* Hafif şeffaf arka plan (okunurluk için) */
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.05); /* Hafif parlaklık */
+    line-height: 1.8;
+    z-index: 10; /* En üstte olmasını garantile */
+    position: relative;
+    text-align: center; /* Mektup metnini ortala */
+}
+
+/* Mektup İçeriği */
+.letter-content p {
+    margin: 10px 0;
+    font-size: 1.4em;
+    /* Gümüş tonu vurgusu */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.to-line {
+    font-size: 1.8em !important;
+    margin-bottom: 30px !important;
+    font-weight: bold;
+}
+
+.signature {
+    margin-top: 50px !important;
+    font-size: 1.5em !important;
+    font-style: italic;
+}
+
+/* En Alttaki Not */
+.footer-note {
+    font-family: Arial, sans-serif; /* Daha okunaklı, küçük bir font */
+    font-size: 0.8em;
+    color: #555; /* Daha sönük bir gri */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    border: 1px dashed #333;
+    z-index: 10;
+    position: relative;
+}
+
+
+/* --- YILDIZ ANİMASYONU (Hafif Yıldız Etkisi) --- */
+
+/* Yıldızların Temel Yapısı (Çoklu katmanlar daha derin bir etki verir) */
+#stars, #stars2, #stars3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background: transparent;
+}
+
+/* İlk katman (Daha az, daha büyük yıldızlar) */
+#stars {
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(3px 3px at 80px 10px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 120px 40px, #fff, rgba(0,0,0,0));
+    background-size: 150px 150px;
+    animation: stars-move 100s linear infinite;
+}
+
+/* İkinci katman (Orta yoğunluk) */
+#stars2 {
+    background-image: 
+        radial-gradient(2px 2px at 50px 160px, #eee, rgba(0,0,0,0)),
+        radial-gradient(3px 3px at 100px 100px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 150px 120px, #ddd, rgba(0,0,0,0));
+    background-size: 200px 200px;
+    animation: stars-move 150s linear infinite reverse; /* Ters yönde hareket */
+}
+
+/* Üçüncü katman (En yoğun ve küçük yıldızlar) */
+#stars3 {
+    background-image: 
+        radial-gradient(1px 1px at 0px 50px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 10px 100px, #eee, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 30px 150px, #ddd, rgba(0,0,0,0));
+    background-size: 100px 100px;
+    animation: stars-move 200s linear infinite;
+}
+
+/* Yıldızların Hareket Animasyonu */
+@keyframes stars-move {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        /* Yatay ve dikeyde hafif kayma efekti */
+        background-position: 10000px 5000px; 
+    }
+}
